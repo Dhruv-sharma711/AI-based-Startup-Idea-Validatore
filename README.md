@@ -19,22 +19,22 @@ SWOT Analysis · Market Sizing · Competitor Research · Viability Score · PDF 
 
 ## 📸 Preview
 
-```
-┌─────────────────────────────────────────────────┐
-│  💡 Enter Your Startup Idea                      │
-│  ┌───────────────────────────────────────────┐  │
-│  │ "An app that connects local farmers       │  │
-│  │  directly with urban consumers..."        │  │
-│  └───────────────────────────────────────────┘  │
-│                  [ Validate Idea → ]             │
-└─────────────────────────────────────────────────┘
-          ↓  AI processes in ~20 seconds
-┌──────────────┬──────────────┬───────────────────┐
-│  SWOT Chart  │ Market Size  │  Viability: 8/10  │
-├──────────────┴──────────────┴───────────────────┤
-│  Top 3 Competitors  │  📄 Download PDF Brief    │
-└─────────────────────────────────────────────────┘
-```
+                                        ```
+                                        ┌─────────────────────────────────────────────────┐
+                                        │  💡 Enter Your Startup Idea                      │
+                                        │  ┌───────────────────────────────────────────┐  │
+                                        │  │ "An app that connects local farmers       │  │
+                                        │  │  directly with urban consumers..."        │  │
+                                        │  └───────────────────────────────────────────┘  │
+                                        │                  [ Validate Idea → ]             │
+                                        └─────────────────────────────────────────────────┘
+                                                  ↓  AI processes in ~20 seconds
+                                        ┌──────────────┬──────────────┬───────────────────┐
+                                        │  SWOT Chart  │ Market Size  │  Viability: 8/10  │
+                                        ├──────────────┴──────────────┴───────────────────┤
+                                        │  Top 3 Competitors  │  📄 Download PDF Brief    │
+                                        └─────────────────────────────────────────────────┘
+                                        ```
 
 ---
 
