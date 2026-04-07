@@ -235,10 +235,10 @@ Returns the 20 most recently saved ideas (requires MongoDB connection).
 
 | Name | Roll No | Contact |
 |---|---|---|
-| 👨‍💻 **Dhruv Sharma** | 2304921540054 | 79069 40020 |
-| 👨‍💻 **Sarthak Singh** | 2304921540146 | 63945 76746 |
-| 👨‍💻 **Vivansh Jaiswal** | 2304921540188 | 99357 97288 |
-| **Gaurav Sahu** | 2304921540057 | 📞 91186 62611 |
+| 👨‍💻 **Dhruv Sharma** | 2304921540054 | 📞 79069 40020 |
+| 👨‍💻 **Sarthak Singh** | 2304921540146 | 📞 63945 76746 |
+| 👨‍💻 **Vivansh Jaiswal** | 2304921540188 | 📞 99357 97288 |
+| 👨‍💻 **Gaurav Sahu** | 2304921540057 | 📞 91186 62611 |
 
 ---
 
