@@ -1,123 +1,133 @@
 import { useMemo, useState } from "react";
 
+const contactTopics = [
+  {
+    icon: "FR",
+    title: "Feature requests",
+    description: "Share what would make the validator more useful for real founders and operators.",
+  },
+  {
+    icon: "BG",
+    title: "Bug reports",
+    description: "If something looks off in the UI or flow, send the exact issue and how to reproduce it.",
+  },
+  {
+    icon: "CO",
+    title: "Collaborations",
+    description: "Reach out if you want to extend the validator, test it with users, or partner on improvements.",
+  },
+];
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const supportEmail = "support@ideavalidator.app";
 
   const canSubmit = useMemo(
     () => form.name.trim() && form.email.trim() && form.message.trim(),
     [form]
   );
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setForm((p) => ({ ...p, [name]: value }));
+  const updateField = (event) => {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setSubmitted(true);
-    const subject = encodeURIComponent("Startup Idea Validator — Contact");
+
+    const subject = encodeURIComponent("Startup Idea Validator - Contact");
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}\n`
     );
-    window.location.href = `mailto:${form.email}?subject=${subject}&body=${body}`;
+
+    window.location.href = `mailto:${supportEmail}?subject=${subject}&body=${body}`;
   };
 
   return (
-    <div className="page-container animate-in">
-      <div className="panel page-panel">
-        <div className="section-tag">Contact</div>
-        <h1 className="page-title">Let's improve your validator</h1>
-        <div className="gold-line" />
-        <p className="page-subtitle">
-          Send feature requests, report bugs, or share ideas to make the reports
-          more founder-friendly. We read every message.
-        </p>
-
-        <form className="contact-form" onSubmit={onSubmit}>
-          <div className="two-column">
-            <div>
-              <label htmlFor="name">Your Name</label>
-              <input
-                id="name" name="name" value={form.name} onChange={onChange}
-                placeholder="e.g. Dhruv Sharma" required
-              />
-            </div>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                id="email" type="email" name="email" value={form.email}
-                onChange={onChange} placeholder="e.g. dhruv@example.com" required
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message" name="message" rows={6} value={form.message}
-              onChange={onChange}
-              placeholder="Tell us what you want to add or change..."
-              required
-            />
-          </div>
-
-          <div className="form-footer">
-            <button className="primary-button" type="submit" disabled={!canSubmit}>
-              Send Message →
-            </button>
-            <span className="contact-note">
-              {submitted
-                ? "If your email app didn't open, copy and send manually."
-                : "Opens your email client via mailto."}
-            </span>
-          </div>
-        </form>
-
-        <div className="divider" />
-
-        {/* Contact info row */}
-        <div
-          style={{
-            display: "flex",
-            gap: 16,
-            flexWrap: "wrap",
-          }}
-        >
-          {[
-            { icon: "💡", label: "Feature Requests", desc: "Tell us what's missing." },
-            { icon: "🐛", label: "Bug Reports", desc: "Found a glitch? Let us know." },
-            { icon: "🤝", label: "Partnerships", desc: "Want to collaborate?" },
-          ].map((item) => (
-            <div
-              key={item.label}
-              style={{
-                flex: 1,
-                minWidth: 160,
-                background: "var(--bg-card-2)",
-                border: "1px solid var(--border)",
-                borderRadius: "var(--r12)",
-                padding: "16px 18px",
-              }}
-            >
-              <div style={{ fontSize: 22, marginBottom: 6 }}>{item.icon}</div>
-              <div
-                style={{
-                  fontFamily: "var(--font-head)",
-                  fontSize: 13,
-                  letterSpacing: 1,
-                  color: "var(--gold)",
-                  marginBottom: 4,
-                }}
-              >
-                {item.label}
-              </div>
-              <div style={{ fontSize: 12, color: "var(--text-3)" }}>{item.desc}</div>
-            </div>
-          ))}
+    <div className="app-page app-frame">
+      <section className="surface-card page-hero animate-in">
+        <div className="page-hero-copy">
+          <div className="eyebrow">Contact</div>
+          <h1>Send feedback that helps the validator feel sharper and more trustworthy.</h1>
+          <p>
+            Feature ideas, design polish, bug reports, and founder workflow suggestions are all useful here.
+            The contact experience should feel as polished as the product itself.
+          </p>
         </div>
-      </div>
+      </section>
+
+      <section className="surface-card page-section animate-in">
+        <div className="contact-layout">
+          <form className="contact-form-shell" onSubmit={handleSubmit}>
+            <div className="section-tag">Send a message</div>
+
+            <div className="form-grid">
+              <div>
+                <label htmlFor="contact-name">Your name</label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  value={form.name}
+                  onChange={updateField}
+                  placeholder="Dhruv Sharma"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="contact-email">Email</label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={updateField}
+                  placeholder="dhruv@example.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="contact-message">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows={7}
+                value={form.message}
+                onChange={updateField}
+                placeholder="Tell us what should be improved, fixed, or expanded."
+                required
+              />
+            </div>
+
+            <div className="dock-actions">
+              <button type="submit" className="primary-button" disabled={!canSubmit}>
+                Send message
+              </button>
+              <p className="form-note">
+                {submitted
+                  ? `If your email app did not open, send your note directly to ${supportEmail}.`
+                  : `This opens your default email client and drafts a message to ${supportEmail}.`}
+              </p>
+            </div>
+          </form>
+
+          <div className="contact-side">
+            {contactTopics.map((item) => (
+              <article key={item.title} className="contact-mini">
+                <div className="icon-chip" aria-hidden="true">
+                  {item.icon}
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

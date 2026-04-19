@@ -1,40 +1,59 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function Navbar({ onOpenAuth }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
   const linkClass = ({ isActive }) =>
     isActive ? "nav-link nav-link-active" : "nav-link";
 
   return (
     <header className="topbar">
       <div className="brand">
-        <div className="brand-mark" aria-hidden="true">IV</div>
+        <img className="brand-mark brand-mark-image" src="/logo-mark.svg" alt="Idea Validator logo" />
         <div className="brand-text">
           <strong>Idea Validator</strong>
-          <span>AI · Founder Ready</span>
+          <span>Founder-grade startup feedback</span>
         </div>
       </div>
 
-      <nav className="nav">
-        <NavLink to="/" end className={linkClass}>Home</NavLink>
-        <NavLink to="/about" className={linkClass}>About</NavLink>
-        <NavLink to="/contact" className={linkClass}>Contact</NavLink>
+      <button
+        type="button"
+        className="soft-button menu-toggle"
+        onClick={() => setMenuOpen((open) => !open)}
+        aria-expanded={menuOpen}
+        aria-label="Toggle navigation"
+      >
+        {menuOpen ? "Close" : "Menu"}
+      </button>
 
-        <button
-          className="ghost-button"
-          style={{ marginLeft: "12px", padding: "9px 20px" }}
-          onClick={() => onOpenAuth("login")}
-        >
-          Login
-        </button>
+      <div className={`nav-wrap ${menuOpen ? "open" : ""}`}>
+        <nav className="nav" aria-label="Main navigation">
+          <NavLink to="/" end className={linkClass}>
+            Home
+          </NavLink>
+          <NavLink to="/about" className={linkClass}>
+            About
+          </NavLink>
+          <NavLink to="/contact" className={linkClass}>
+            Contact
+          </NavLink>
+        </nav>
 
-        <button
-          className="primary-button"
-          style={{ marginLeft: "6px", padding: "10px 22px", fontSize: "10px", letterSpacing: "2px" }}
-          onClick={() => onOpenAuth("register")}
-        >
-          Sign Up
-        </button>
-      </nav>
+        <div className="nav-actions">
+          <button type="button" className="secondary-button" onClick={() => onOpenAuth("login")}>
+            Login
+          </button>
+          <button type="button" className="primary-button" onClick={() => onOpenAuth("register")}>
+            Sign Up
+          </button>
+        </div>
+      </div>
     </header>
   );
 }
